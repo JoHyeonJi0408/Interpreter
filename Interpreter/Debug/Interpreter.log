@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\JHJ\VisualStudioProjects\Interpreter\Interpreter\lexer.h(90,20): warning C4018: '>=': signed 또는 unsigned가 일치하지 않습니다.
+C:\JHJ\VisualStudioProjects\Interpreter\Interpreter\lexer.h(102,20): warning C4018: '>=': signed 또는 unsigned가 일치하지 않습니다.
+  Interpreter.vcxproj -> C:\JHJ\VisualStudioProjects\Interpreter\Debug\Interpreter.exe
