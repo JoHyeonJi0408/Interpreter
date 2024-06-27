@@ -137,12 +137,6 @@ struct Lexer {
 
 		SkipWhitespace();
 
-		if (ch == 0) {
-			token.Literal = "";
-			token.Type = ENDOFFILE;
-
-			return token;
-		}
 
 		switch (ch) {
 		case '=':
@@ -150,43 +144,64 @@ struct Lexer {
 				ReadChar();
 
 				token = Token(EQ, "==");
+				break;
 			}
 			else {
 				token = Token(ASSIGN, string(1, ch));
+				break;
 			}
 		case '+':
 			token = Token(PLUS, string(1, ch));
+			break;
 		case '-':
 			token = Token(MINUS, string(1, ch));
+			break;
 		case '!':
 			if (PeekChar() == '=') {
 				ReadChar();
 
 				token = Token(NOT_EQ, "!=");
+				break;
 			}
 			else {
 				token = Token(BANG, string(1, ch));
+				break;
 			}
 		case '/':
 			token = Token(SLASH, string(1, ch));
+			break;
 		case '*':
 			token = Token(ASTERISK, string(1, ch));
+			break;
 		case '<':
 			token = Token(LT, string(1, ch));
+			break;
 		case '>':
 			token = Token(GT, string(1, ch));
+			break;
 		case ';':
 			token = Token(SEMICOLON, string(1, ch));
+			break;
 		case ',':
 			token = Token(COMMA, string(1, ch));
+			break;
 		case '(':
 			token = Token(LPAREN, string(1, ch));
+			break;
 		case ')':
 			token = Token(RPAREN, string(1, ch));
+			break;
 		case '{':
 			token = Token(LBRACE, string(1, ch));
+			break;
 		case '}':
 			token = Token(RBRACE, string(1, ch));
+			break;
+		case 0:
+			token.Literal = "";
+			token.Type = ENDOFFILE;
+
+			return token;
 		default:
 			if (isLetter(ch)) {
 				token.Literal = ReadIdentifier();
@@ -196,6 +211,7 @@ struct Lexer {
 			}
 			else {
 				token = Token(ILLEGAL, string(1, ch));
+				break;
 			}
 		}
 
