@@ -1,3 +1,6 @@
+#ifndef TOKENIZER_H
+#define TOKENIZER_H
+
 #include <string>
 #include <map>
 using namespace std;
@@ -34,28 +37,16 @@ enum TokenType {
 	RETURN
 };
 
-map<string, TokenType> keywords = {
-	{"fn", FUNCTION},
-	{"let", LET},
-	{"true", TRUE},
-	{"false", FALSE},
-	{"if", IF},
-	{"else", ELSE},
-	{"return", RETURN }
-};
+extern map<string, TokenType> keywords;
 
 struct Token {
 	TokenType Type;
 	string Literal;
 
-	Token() : Type(ILLEGAL), Literal("") {}
-	Token(TokenType t, const string& lit) : Type(t), Literal(lit) {}
+	Token();
+	Token(TokenType t, const string& lit);
 
-	TokenType LookupIdent(string ident) {
-		if (keywords.find(ident) != keywords.end()) {
-			return keywords[ident];
-		}
-
-		return IDENT;
-	}
+	TokenType LookupIdent(string ident);
 };
+
+#endif
